@@ -55,6 +55,15 @@
            th:field="*{password}"/> <br/>
 
 
+    <div class="col-3">
+        <label id="selectRoleType">Select Role Type</label>
+        <Select th:field="*{roletype}">
+            <option value="applicant" >Applicant</option>
+            <option value="employer" >Employer</option>
+        </Select>
+        <span th:if="${#fields.hasErrors('roletype')}" th:errors="*{roletype}"></span>
+    </div>
+
     <button type="submit" class="btn btn-default">Submit</button>
 
 </form>

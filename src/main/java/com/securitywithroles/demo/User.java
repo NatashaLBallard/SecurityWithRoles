@@ -28,6 +28,9 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "role_type")
+    private String role_type;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -107,6 +110,14 @@ public class User {
 
     public void setRoles(Collection<RoleClass> roles) {
         this.roles = roles;
+    }
+
+    public String getRole_type() {
+        return role_type;
+    }
+
+    public void setRole_type(String role_type) {
+        this.role_type = role_type;
     }
 }
 

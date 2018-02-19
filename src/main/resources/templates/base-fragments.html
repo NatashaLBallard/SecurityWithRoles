@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" />
+
+</head>
+<body>
+
+
+
+
+
+<!--Start of NAVIGATION MENU-->
+<div th:fragment="navbarmenu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/}">
+            <img src="https://www.resumeviking.com/wp-content/uploads/2018/01/ResumeIO-logo.png"
+                 alt="logo pic" height="100px" width="100px" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/} ">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="hasAnyAuthority('APPLICANT','ADMIN')"  th:href="@{/applicant} ">APPLICANT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="hasAnyAuthority('EMPLOYER','ADMIN')" th:href="@{/employer}">EMPLOYER</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" th:href="@{/admin}">ADMIN</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--End of NAVIGATION MENU-->
+
+
+
+
+
+
+
+
+</body>
+</html>

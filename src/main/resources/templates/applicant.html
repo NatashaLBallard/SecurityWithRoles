@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" />
+
+
 </head>
 <body>
 
 <h3>Secure Page for Applicant</h3>
-<h4>Click below to test access or restricted.</h4>
+<h4>Click below to test access or restricted.</h4><br/><br/>
+
+
+<div th:replace="base-fragments :: navbarmenu"></div><br/><br/>
+
+
+
 
 
 <a href="/applicant">Applicant View</a><br/>

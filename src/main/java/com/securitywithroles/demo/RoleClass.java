@@ -49,4 +49,11 @@ public class RoleClass {
     public void setUsers(Collection<User> users) {
         this.users = users;
     }
+
+    @Override
+    public String toString() {
+        return "RoleClass{" +
+                "role='" + role + '\'' +
+                '}';
+    }
 }
