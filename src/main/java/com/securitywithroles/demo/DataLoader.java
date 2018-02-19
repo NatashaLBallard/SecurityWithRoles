@@ -19,11 +19,17 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         System.out.println("Loading data...");
 
-        roleRepository.save(new RoleClass("USER"));
         roleRepository.save(new RoleClass("ADMIN"));
+        roleRepository.save(new RoleClass("USER"));
+        roleRepository.save(new RoleClass("APPLICANT"));
+        roleRepository.save(new RoleClass("EMPLOYER"));
+
 
         RoleClass adminRole = roleRepository.findByRole("ADMIN");
         RoleClass userRole = roleRepository.findByRole("USER");
+        RoleClass applicantRole = roleRepository.findByRole("APPLICANT");
+        RoleClass employerRole = roleRepository.findByRole("EMPLOYER");
+
 
         User user = new
                 User("bob@bob.com", "bob", "Bob", "Bobberson", true, "bob");
@@ -32,7 +38,7 @@ public class DataLoader implements CommandLineRunner {
 
         user = new
                 User("jim@jim.com", "jim", "Jim", "Jimmerson", true, "jim");
-        user.setRoles(Arrays.asList(userRole));
+        user.setRoles(Arrays.asList(employerRole));
         userRepository.save(user);
 
         user = new
@@ -42,7 +48,7 @@ public class DataLoader implements CommandLineRunner {
 
         user = new
                 User("sam@ev.com", "pass", "Sam", "Everyman", true, "sam");
-        user.setRoles(Arrays.asList(adminRole));
+        user.setRoles(Arrays.asList(applicantRole));
         userRepository.save(user);
 
     }

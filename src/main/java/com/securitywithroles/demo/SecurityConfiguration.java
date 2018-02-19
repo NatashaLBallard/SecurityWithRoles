@@ -34,6 +34,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/","/h2-console/**",
                         "/register").permitAll()
+                .antMatchers("/admin").access("hasAuthority('ADMIN')")
+                .antMatchers("/applicant").access("hasAuthority('APPLICANT')")
+                .antMatchers("/employer").access("hasAuthority('EMPLOYER')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

@@ -58,4 +58,22 @@ public class MainController {
         return "secure";
     }
 
+
+    @RequestMapping("/applicant")
+    public String applicant(){
+        return "applicant";
+    }
+
+
+    @RequestMapping("/employer")
+    public String employer(){
+        return "employer";
+    }
+
+
+    @RequestMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
+
 }
