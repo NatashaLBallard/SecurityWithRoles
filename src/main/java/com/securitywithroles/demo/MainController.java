@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 
 @Controller
 public class MainController {
@@ -32,16 +33,34 @@ public class MainController {
             @Valid @ModelAttribute("user") User user,
             BindingResult result,
             Model model) {
+//
+//        model.addAttribute("roleType", userRepository.findOne(user.getId()));
+//        User roleType = userRepository.findOne(id)
+//        userRespository.save(roleType);
+//        System.out.println(user.getRoleType());
+//
 
+// add if statement to set value of options "if roleType (from dropdown) equals APPLICANT, set to applicant, else.."
         model.addAttribute("user", user);
         if (result.hasErrors()) {
             return "registration";
         } else {
+            user.setRoles(Arrays.asList());
             userService.saveUser(user);
             model.addAttribute("message",
                     "User Account Successfully Created");
+            System.out.println("New user created.");
+            System.out.println(user.getRoleType());
         }
         return "index";
+//
+//
+//        user.setRoleType(roleType;
+//        userRepository.save(roleType);
+
+//        model.addAttribute("roleType",roleRepository);
+//        String roleType=roleType.getRoleType;
+
     }
 
 

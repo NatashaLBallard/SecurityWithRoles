@@ -28,21 +28,22 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "role_type")
-    private String role_type;
+    @Column(name = "roleType")
+    private String roleType;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<RoleClass> roles;
 
-    public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
+    public User(String email, String password, String firstName, String lastName, boolean enabled, String username, String roleType) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.enabled = enabled;
         this.username = username;
+        this.roleType = roleType;
     }
 
     public User() {
@@ -112,12 +113,20 @@ public class User {
         this.roles = roles;
     }
 
-    public String getRole_type() {
-        return role_type;
+    public String getRoleType() {
+        return roleType;
     }
 
-    public void setRole_type(String role_type) {
-        this.role_type = role_type;
+    public void setRoleType(String roleType) {
+        this.roleType = roleType;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "roleType='" + roleType + '\'' +
+                '}';
     }
 }
 

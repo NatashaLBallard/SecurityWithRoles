@@ -17,6 +17,13 @@
 
 <div th:replace="base-fragments :: navbarmenu"></div><br/><br/>
 
+
+<span sec:authorize="isAuthenticated()">
+Welcome <b><p sec:authentication="name">!</p></b>
+    <!--<p>You are signed in as a<p sec:authentication="principal.authorities"></p></p>-->
+</span>
+
+
 <a href="/applicant">Applicant View</a><br/>
 <a href="/employer">Employer View</a><br/>
 <a href="/admin">Admin View</a><br/>
@@ -26,10 +33,7 @@
 <hr/>
 
 
-<span sec:authorize="isAuthenticated()">
-<p sec:authentication="name"></p>
-<p sec:authentication="principal.authorities"></p>
-</span>
+
 
 
 
