@@ -37,17 +37,17 @@ public class DataLoader implements CommandLineRunner {
         userRepository.save(user);
 
         user = new
-                User("jim@jim.com", "jim", "Jim", "Jimmerson", true, "jim");
+                User("jim@jim.com", "password", "Jim", "Jimmerson", true, "employer");
         user.setRoles(Arrays.asList(employerRole));
         userRepository.save(user);
 
         user = new
-                User("admin@adm.com", "pass", "Admin", "User", true, "admin");
+                User("admin@adm.com", "password", "Admin", "User", true, "admin");
         user.setRoles(Arrays.asList(adminRole));
         userRepository.save(user);
 
         user = new
-                User("sam@ev.com", "pass", "Sam", "Everyman", true, "sam");
+                User("sam@ev.com", "password", "Sam", "Everyman", true, "applicant");
         user.setRoles(Arrays.asList(applicantRole));
         userRepository.save(user);
 
