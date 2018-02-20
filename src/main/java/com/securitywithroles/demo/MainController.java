@@ -7,12 +7,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Arrays;
 
 @Controller
@@ -28,6 +32,28 @@ public class MainController {
         return "registration";
     }
 
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public class LoginServlet extends HttpServlet {
+
+        protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            String roleType = request.getParameter("roleType");
+
+            System.out.println("role type: " + roleType);
+        }
+
+    }
+
+
+//    @RequestMapping(value = "/register/{id}")
+//    public String roleType (Model model, @PathVariable("id")) String assignedRoleType){
+//
+//    }
+
+
+
+
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String processRegistrationPage(
             @Valid @ModelAttribute("user") User user,
@@ -36,12 +62,13 @@ public class MainController {
 //
 //        model.addAttribute("roleType", userRepository.findOne(user.getId()));
 //        User roleType = userRepository.findOne(id)
-//        userRespository.save(roleType);
+//        userRepository.save(roleType);
 //        System.out.println(user.getRoleType());
 //
 
 // add if statement to set value of options "if roleType (from dropdown) equals APPLICANT, set to applicant, else.."
         model.addAttribute("user", user);
+
         if (result.hasErrors()) {
             return "registration";
         } else {
